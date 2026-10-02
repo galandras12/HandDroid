@@ -1,0 +1,6 @@
+{
+  "name": "HandDroid",
+  "description": "An Android video converter inspired by HandBrake, supporting presets and custom encoding settings.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
