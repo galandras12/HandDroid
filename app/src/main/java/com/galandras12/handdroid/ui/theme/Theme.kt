@@ -1,7 +1,10 @@
 package com.galandras12.handdroid.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.MaterialExpressiveTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MotionScheme
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
@@ -91,11 +94,12 @@ private val DarkColors = darkColorScheme(
 private val AppShapes = Shapes(
     extraSmall = RoundedCornerShape(6.dp),
     small = RoundedCornerShape(10.dp),
-    medium = RoundedCornerShape(14.dp),
-    large = RoundedCornerShape(20.dp),
-    extraLarge = RoundedCornerShape(28.dp),
+    medium = RoundedCornerShape(16.dp),
+    large = RoundedCornerShape(24.dp),
+    extraLarge = RoundedCornerShape(32.dp),
 )
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun HandDroidTheme(mode: ThemeMode, content: @Composable () -> Unit) {
     val dark = when (mode) {
@@ -103,5 +107,10 @@ fun HandDroidTheme(mode: ThemeMode, content: @Composable () -> Unit) {
         ThemeMode.LIGHT -> false
         ThemeMode.DARK -> true
     }
-    MaterialTheme(colorScheme = if (dark) DarkColors else LightColors, shapes = AppShapes, content = content)
+    MaterialExpressiveTheme(
+        colorScheme = if (dark) DarkColors else LightColors,
+        shapes = AppShapes,
+        motionScheme = MotionScheme.expressive(),
+        content = content,
+    )
 }

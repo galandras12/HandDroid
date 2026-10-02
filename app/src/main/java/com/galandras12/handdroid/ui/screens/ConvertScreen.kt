@@ -18,9 +18,8 @@ import androidx.compose.material.icons.rounded.PlayArrow
 import androidx.compose.material.icons.rounded.SwapHoriz
 import androidx.compose.material.icons.rounded.VideoFile
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.AssistChip
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.LoadingIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -176,12 +175,13 @@ fun ConvertScreen(vm: MainViewModel, onChoosePreset: () -> Unit, onQueued: () ->
     }
 }
 
+@OptIn(androidx.compose.material3.ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun SourceCard(sources: List<SourceInfo>, probing: Boolean, onOpen: () -> Unit) {
     SectionCard {
         if (probing) {
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                CircularProgressIndicator(Modifier.size(22.dp), strokeWidth = 2.5.dp)
+                LoadingIndicator(Modifier.size(40.dp))
                 Text(stringResource(R.string.scanning))
             }
         } else if (sources.isEmpty()) {
@@ -216,7 +216,10 @@ private fun SourceCard(sources: List<SourceInfo>, probing: Boolean, onOpen: () -
                 }
             }
             if (sources.size > 1) {
-                AssistChip(onClick = {}, label = { Text(pluralStringResource(R.plurals.more_files, sources.size - 1, sources.size - 1)) })
+                Text(
+                    pluralStringResource(R.plurals.more_files, sources.size - 1, sources.size - 1),
+                    style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary,
+                )
             }
             OutlinedButton(onClick = onOpen) { Text(stringResource(R.string.change_source)) }
         }

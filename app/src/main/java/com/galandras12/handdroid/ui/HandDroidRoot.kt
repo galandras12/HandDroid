@@ -16,8 +16,9 @@ import androidx.compose.material3.BadgedBox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.NavigationBar
-import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.ShortNavigationBar
+import androidx.compose.material3.ShortNavigationBarItem
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -58,7 +59,7 @@ private enum class Dest(val route: String, val title: Int, val icon: ImageVector
     SETTINGS("settings", R.string.nav_settings, Icons.Rounded.Settings),
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
+@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun HandDroidRoot(vm: MainViewModel, nav: NavHostController = rememberNavController()) {
     val context = LocalContext.current
@@ -112,9 +113,9 @@ fun HandDroidRoot(vm: MainViewModel, nav: NavHostController = rememberNavControl
             )
         },
         bottomBar = {
-            if (top != null) NavigationBar {
+            if (top != null) ShortNavigationBar {
                 Dest.entries.forEach { d ->
-                    NavigationBarItem(
+                    ShortNavigationBarItem(
                         selected = route == d.route,
                         onClick = { go(d) },
                         icon = {

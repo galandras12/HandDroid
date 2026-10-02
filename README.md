@@ -4,7 +4,7 @@
 
 **HandDroid** is an Android video converter *based on [HandBrake](https://handbrake.fr)*. It keeps what makes HandBrake
 useful – a fast MP4 / MKV / WebM converter that reads almost any codec, driven either by **presets** or by detailed
-settings – and brings it to Android in a modern Material Design 3 interface (minimalist grey/white, with a grey/black dark mode).
+settings – and brings it to Android in a modern Material 3 Expressive interface (minimalist grey/white, with a grey/black dark mode).
 
 > HandDroid is an independent project. It is **not** affiliated with or endorsed by the HandBrake Team.
 > HandBrake is © 2003–2026 HandBrake Team, licensed under the GNU GPL v2.

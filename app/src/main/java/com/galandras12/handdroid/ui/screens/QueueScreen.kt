@@ -28,7 +28,8 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.LinearProgressIndicator
+import androidx.compose.material3.LinearWavyProgressIndicator
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
@@ -88,6 +89,7 @@ fun QueueScreen(vm: MainViewModel, onOpenLog: (Long) -> Unit, requestNotificatio
     }
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun JobCard(job: EncodeJob, vm: MainViewModel, onOpenLog: (Long) -> Unit) {
     val context = LocalContext.current
@@ -115,8 +117,8 @@ private fun JobCard(job: EncodeJob, vm: MainViewModel, onOpenLog: (Long) -> Unit
             when (job.status) {
                 JobStatus.PENDING -> Text(stringResource(R.string.status_waiting), style = MaterialTheme.typography.bodySmall)
                 JobStatus.RUNNING -> {
-                    if (job.progress >= 0) LinearProgressIndicator(progress = { job.progress }, Modifier.fillMaxWidth())
-                    else LinearProgressIndicator(Modifier.fillMaxWidth())
+                    if (job.progress >= 0) LinearWavyProgressIndicator(progress = { job.progress }, modifier = Modifier.fillMaxWidth())
+                    else LinearWavyProgressIndicator(modifier = Modifier.fillMaxWidth())
                     val parts = buildList {
                         if (job.progress >= 0) add("${(job.progress * 100).toInt()} %")
                         if (job.fps > 0) add("%.1f fps".format(job.fps))

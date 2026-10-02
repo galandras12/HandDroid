@@ -4,9 +4,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Card
@@ -18,9 +16,9 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.SegmentedButton
-import androidx.compose.material3.SegmentedButtonDefaults
-import androidx.compose.material3.SingleChoiceSegmentedButtonRow
+import androidx.compose.material3.ButtonGroupDefaults
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.ToggleButton
 import androidx.compose.material3.Slider
 import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
@@ -117,6 +115,7 @@ fun SliderRow(
     }
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun <T> SegmentedChoice(
     options: List<T>,
@@ -126,14 +125,20 @@ fun <T> SegmentedChoice(
     modifier: Modifier = Modifier,
     enabled: Boolean = true,
 ) {
-    SingleChoiceSegmentedButtonRow(modifier.fillMaxWidth()) {
+    // Expressive connected toggle buttons: the selected one morphs to a pill
+    Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(ButtonGroupDefaults.ConnectedSpaceBetween)) {
         options.forEachIndexed { i, o ->
-            SegmentedButton(
-                selected = o == selected,
-                onClick = { onSelect(o) },
+            ToggleButton(
+                checked = o == selected,
+                onCheckedChange = { onSelect(o) },
                 enabled = enabled,
-                shape = SegmentedButtonDefaults.itemShape(i, options.size),
-            ) { Text(optionLabel(o), maxLines = 1) }
+                modifier = Modifier.weight(1f),
+                shapes = when (i) {
+                    0 -> ButtonGroupDefaults.connectedLeadingButtonShapes()
+                    options.lastIndex -> ButtonGroupDefaults.connectedTrailingButtonShapes()
+                    else -> ButtonGroupDefaults.connectedMiddleButtonShapes()
+                },
+            ) { Text(optionLabel(o), maxLines = 1, style = MaterialTheme.typography.labelLarge) }
         }
     }
 }
@@ -160,5 +165,3 @@ fun IntField(label: String, value: Int, onValue: (Int) -> Unit, modifier: Modifi
 @Composable
 fun Hint(text: String) = Text(text, style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
 
-@Composable
-fun VSpace(h: Int = 8) = Spacer(Modifier.height(h.dp))

@@ -1,7 +1,7 @@
 [versions]
 agp = "8.9.3"
 kotlin = "2.1.21"
-composeBom = "2025.06.01"
+composeBom = "2025.09.00"
 activityCompose = "1.10.1"
 navigationCompose = "2.9.1"
 lifecycle = "2.9.1"
@@ -23,7 +23,7 @@ compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeB
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
-compose-material3 = { module = "androidx.compose.material3:material3" }
+compose-material3 = { module = "androidx.compose.material3:material3", version = "1.5.0-alpha08" }
 compose-material-icons = { module = "androidx.compose.material:material-icons-extended" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }

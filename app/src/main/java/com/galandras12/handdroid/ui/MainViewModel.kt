@@ -95,7 +95,6 @@ class MainViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    fun clearSources() { _sources.value = emptyList() }
     fun setOutputName(name: String) { _outputName.value = name }
 
     // ----------------------------------------------------------- settings
