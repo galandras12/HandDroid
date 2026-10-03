@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.galandras12.handdroid"
+    namespace = "com.galandras12.unofficialhandbrake"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.galandras12.handdroid"
+        applicationId = "com.galandras12.unofficialhandbrake"
         minSdk = 26
         targetSdk = 35
         versionCode = 10001

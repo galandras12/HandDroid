@@ -9,7 +9,7 @@ settings – and brings it to Android in a modern Material 3 Expressive interfac
 > HandDroid is an independent project. It is **not** affiliated with or endorsed by the HandBrake Team.
 > HandBrake is © 2003–2026 HandBrake Team, licensed under the GNU GPL v2.
 
-* Package: `com.galandras12.handdroid` · Version: **1.0.1** · Min Android 8.0 (API 26)
+* Package: `com.galandras12.unofficialhandbrake` · Version: **1.0.1** · Min Android 8.0 (API 26)
 * License: **GNU General Public License v2** (see [`LICENSE`](LICENSE) and [`NOTICE.md`](NOTICE.md))
 
 ## Features
@@ -35,7 +35,7 @@ It has no Android toolchain, so HandDroid does **not** embed `libhb`. Instead, l
 **FFmpeg**, x264, x265, libvpx and libaom, using the maintained
 [`ffmpeg-kit-full-gpl`](https://central.sonatype.com/artifact/com.antonkarpenko/ffmpeg-kit-full-gpl) build for Android.
 HandBrake's presets and the structure of its settings are translated into FFmpeg command lines by
-[`CommandBuilder`](app/src/main/java/com/galandras12/handdroid/engine/CommandBuilder.kt).
+[`CommandBuilder`](app/src/main/java/com/galandras12/unofficialhandbrake/engine/CommandBuilder.kt).
 
 Things HandBrake can do that HandDroid 1.0.1 cannot (yet): DVD / Blu-ray disc sources, burned-in subtitles, SVT-AV1
 (libaom is used for AV1), HDR10/Dolby Vision metadata handling and tone mapping, auto-crop, per-track audio settings.
@@ -72,6 +72,6 @@ Android logo (CC BY 3.0, Google).
 
 1. Copy `tools/i18n/de.txt` to `tools/i18n/<tag>.txt` and translate the text after each ` = `.
 2. Add the language to `LANGS` in `tools/gen_strings.py` and to `localeFilters` in `app/build.gradle.kts`.
-3. Run `python3 tools/gen_strings.py app/src/main/res app/src/main/java/com/galandras12/handdroid/ui`.
+3. Run `python3 tools/gen_strings.py app/src/main/res app/src/main/java/com/galandras12/unofficialhandbrake/ui`.
 
 HandBrake preset names and descriptions are kept in English, as in HandBrake itself.
