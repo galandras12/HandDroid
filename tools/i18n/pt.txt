@@ -177,3 +177,4 @@ more_files#one = +%1$d arquivo a mais
 more_files#other = +%1$d arquivos a mais
 notif_finished_ok#one = %1$d vídeo convertido
 notif_finished_ok#other = %1$d vídeos convertidos
+language_auto_hint = Os idiomas abaixo da lista são traduzidos automaticamente no telefone pelo Google ML Kit (um pequeno pacote de idioma é baixado uma vez).

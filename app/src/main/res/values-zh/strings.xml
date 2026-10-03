@@ -161,6 +161,7 @@
     <string name="language_hint">HandDroid 会自动跟随手机的语言。在此选择语言可覆盖默认设置。</string>
     <string name="err_no_output">编码器没有生成输出</string>
     <string name="err_save_failed">无法保存转换后的文件</string>
+    <string name="language_auto_hint">列表下方的语言由 Google ML Kit 在手机上自动翻译（会一次性下载一个小型语言包）。</string>
     <string name="about_handdroid">关于 HandDroid</string>
     <string name="about_summary">版本、许可证和致谢</string>
     <string name="version_fmt">版本 %1$s</string>

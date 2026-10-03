@@ -161,6 +161,9 @@
     <string name="language_hint">HandDroid follows your phone\'s language automatically. Pick a language here to override it.</string>
     <string name="err_no_output">The encoder produced no output</string>
     <string name="err_save_failed">Could not save the converted file</string>
+    <string name="auto_translating">Translating the interface to your language…</string>
+    <string name="auto_translate_failed">Automatic translation isn\'t available right now (it needs an internet connection once). The app stays in English.</string>
+    <string name="language_auto_hint">Languages below the list are translated automatically on your phone by Google ML Kit (a small language pack is downloaded once).</string>
     <string name="about_handdroid">About HandDroid</string>
     <string name="about_summary">Version, license and credits</string>
     <string name="version_fmt">Version %1$s</string>

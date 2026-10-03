@@ -3,7 +3,14 @@ package com.galandras12.unofficialhandbrake
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
+import android.content.res.Resources
 import android.os.Bundle
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.galandras12.unofficialhandbrake.i18n.AutoTranslation
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import androidx.appcompat.app.AppCompatActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -22,6 +29,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         if (savedInstanceState == null) handleIntent(intent)
+        AutoTranslation.prepare(this)
+        // When an automatic translation finishes, restart the UI so it picks up the translated texts
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                var shown = AutoTranslation.resources
+                AutoTranslation.status.collect {
+                    if (it is AutoTranslation.Status.Ready && AutoTranslation.resources !== shown) { shown = AutoTranslation.resources; recreate() }
+                }
+            }
+        }
         setContent {
             val theme by vm.theme.collectAsStateWithLifecycle()
             HandDroidTheme(theme) {
@@ -29,6 +46,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    override fun getResources(): Resources = AutoTranslation.resources ?: super.getResources()
 
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)

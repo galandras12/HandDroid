@@ -161,6 +161,7 @@
     <string name="language_hint">HandDroid はスマートフォンの言語に自動で合わせます。変更したい場合はここで言語を選んでください。</string>
     <string name="err_no_output">エンコーダーが出力を生成しませんでした</string>
     <string name="err_save_failed">変換したファイルを保存できませんでした</string>
+    <string name="language_auto_hint">リストの下にある言語は、Google ML Kit によって端末上で自動翻訳されます (小さな言語パックが一度だけダウンロードされます)。</string>
     <string name="about_handdroid">HandDroid について</string>
     <string name="about_summary">バージョン、ライセンス、クレジット</string>
     <string name="version_fmt">バージョン %1$s</string>

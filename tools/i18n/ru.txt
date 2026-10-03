@@ -181,3 +181,4 @@ notif_finished_ok#one = Сконвертировано видео: %1$d
 notif_finished_ok#few = Сконвертировано видео: %1$d
 notif_finished_ok#many = Сконвертировано видео: %1$d
 notif_finished_ok#other = Сконвертировано видео: %1$d
+language_auto_hint = Языки под списком переводятся автоматически на телефоне с помощью Google ML Kit (один раз загружается небольшой языковой пакет).

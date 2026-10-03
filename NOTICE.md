@@ -28,3 +28,10 @@ GPL **v3**. GPL-2.0-only code and GPL-3.0 code cannot be combined into one distr
 binaries, either license HandDroid's own code "GPL-2.0-or-later" (HandDroid's original code can then be combined with
 GPLv3 components) or switch to an FFmpeg build without `--enable-version3`. This must be settled with the HandDroid
 copyright holder; the HandBrake-derived preset data is GPL-2.0.
+
+### Google ML Kit (automatic translation)
+
+For languages the app does not ship, `com.google.mlkit:translate` translates the interface texts on the device. ML Kit is
+proprietary software under the Google ML Kit / Google APIs terms, **not** open source, and is not covered by HandDroid's
+GPL. Whether bundling it is compatible with the GPL must be checked before binaries are distributed; if not, remove the
+`mlkit-translate` dependency and the `i18n/AutoTranslation.kt` hooks (HandDroid then falls back to English for unsupported languages).

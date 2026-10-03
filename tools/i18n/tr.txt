@@ -177,3 +177,4 @@ more_files#one = +%1$d dosya daha
 more_files#other = +%1$d dosya daha
 notif_finished_ok#one = %1$d video dönüştürüldü
 notif_finished_ok#other = %1$d video dönüştürüldü
+language_auto_hint = Listenin altındaki diller telefonunda Google ML Kit ile otomatik çevrilir (küçük bir dil paketi bir kez indirilir).

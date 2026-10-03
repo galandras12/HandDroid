@@ -177,3 +177,4 @@ more_files#one = +%1$d weitere Datei
 more_files#other = +%1$d weitere Dateien
 notif_finished_ok#one = %1$d Video konvertiert
 notif_finished_ok#other = %1$d Videos konvertiert
+language_auto_hint = Sprachen unterhalb der Liste werden automatisch auf deinem Telefon mit Google ML Kit übersetzt (einmalig wird ein kleines Sprachpaket geladen).

@@ -175,3 +175,4 @@ third_party = 第三方组件
 third_party_body = 通过 FFmpegKit full-gpl 提供的 FFmpeg (GPL) · x264 · x265 · libvpx · libaom · dav1d · Opus · LAME · Vorbis · libass · Jetpack Compose 和 Material 3 (Apache-2.0)。它们均保留各自的许可证和版权。
 more_files#other = 另外 %1$d 个文件
 notif_finished_ok#other = 已转换 %1$d 个视频
+language_auto_hint = 列表下方的语言由 Google ML Kit 在手机上自动翻译（会一次性下载一个小型语言包）。

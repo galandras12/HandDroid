@@ -161,6 +161,7 @@
     <string name="language_hint">HandDroid sigue automáticamente el idioma de tu teléfono. Elige un idioma aquí para cambiarlo.</string>
     <string name="err_no_output">El codificador no produjo ninguna salida</string>
     <string name="err_save_failed">No se pudo guardar el archivo convertido</string>
+    <string name="language_auto_hint">Los idiomas bajo la lista se traducen automáticamente en tu teléfono con Google ML Kit (se descarga una vez un pequeño paquete de idioma).</string>
     <string name="about_handdroid">Acerca de HandDroid</string>
     <string name="about_summary">Versión, licencia y créditos</string>
     <string name="version_fmt">Versión %1$s</string>

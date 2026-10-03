@@ -181,3 +181,4 @@ notif_finished_ok#one = Przekonwertowano %1$d wideo
 notif_finished_ok#few = Przekonwertowano %1$d wideo
 notif_finished_ok#many = Przekonwertowano %1$d wideo
 notif_finished_ok#other = Przekonwertowano %1$d wideo
+language_auto_hint = Języki poniżej listy są tłumaczone automatycznie na telefonie przez Google ML Kit (jednorazowo pobierany jest mały pakiet językowy).

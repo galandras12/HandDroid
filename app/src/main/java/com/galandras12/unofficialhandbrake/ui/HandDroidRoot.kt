@@ -43,6 +43,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.galandras12.unofficialhandbrake.R
+import com.galandras12.unofficialhandbrake.i18n.AutoTranslation
 import com.galandras12.unofficialhandbrake.engine.JobStatus
 import com.galandras12.unofficialhandbrake.ui.screens.AboutScreen
 import com.galandras12.unofficialhandbrake.ui.screens.ConvertScreen
@@ -76,6 +77,15 @@ fun HandDroidRoot(vm: MainViewModel, nav: NavHostController = rememberNavControl
                     is UiMessage.Text -> m.text
                 }
             )
+        }
+    }
+
+    val autoStatus by AutoTranslation.status.collectAsStateWithLifecycle()
+    LaunchedEffect(autoStatus) {
+        when (autoStatus) {
+            is AutoTranslation.Status.Translating -> snackbar.showSnackbar(context.getString(R.string.auto_translating))
+            AutoTranslation.Status.Failed -> snackbar.showSnackbar(context.getString(R.string.auto_translate_failed))
+            else -> {}
         }
     }
 

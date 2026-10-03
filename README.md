@@ -26,7 +26,7 @@ settings – and brings it to Android in a modern Material 3 Expressive interfac
   * Chapter markers, Web optimized (fast-start) MP4
 * **Queue** with progress, FPS, speed and ETA; runs as a foreground service so encodes continue with the screen off; activity log per job.
 * Batch conversion (pick several videos), *Share → HandDroid* from other apps, saves to `Movies/HandDroid` or a folder you choose.
-* **12 languages**, chosen automatically from the phone's language (English, Magyar, Deutsch, Français, Español, Italiano, Português, Polski, Русский, Türkçe, 日本語, 中文) with an in-app override (also listed in Android 13+ per-app language settings); light / dark / system theme.
+* **12 languages**, chosen automatically from the phone's language (English, Magyar, Deutsch, Français, Español, Italiano, Português, Polski, Русский, Türkçe, 日本語, 中文) with an in-app override and **automatic on-device translation (Google ML Kit)** for every other language the phone is set to, (also listed in Android 13+ per-app language settings); light / dark / system theme.
 
 ## How it works – and how it differs from HandBrake
 
@@ -67,6 +67,14 @@ Release signing is read from the environment: `HANDDROID_KEYSTORE`, `HANDDROID_K
 HandBrake © HandBrake Team · FFmpeg · FFmpegKit · x264 · x265 · libvpx · libaom · Opus · LAME · Vorbis ·
 Jetpack Compose / Material 3. The Android robot head in the logo is a simplified redrawing in the spirit of the
 Android logo (CC BY 3.0, Google).
+
+## Automatic translation for other languages
+
+If the phone (or the in-app picker) uses a language the app doesn't ship, HandDroid translates its English texts on the
+device with [Google ML Kit Translation](https://developers.google.com/ml-kit/language/translation) (59 languages). A small
+language pack is downloaded once (internet needed), the result is cached, and the interface restarts in that language.
+If it fails, the app simply stays in English. Notifications are translated too, but only the app's own texts: HandBrake
+preset names stay English.
 
 ## Adding a language
 

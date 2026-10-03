@@ -36,6 +36,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.galandras12.unofficialhandbrake.R
+import com.galandras12.unofficialhandbrake.i18n.AutoTranslation
 import com.galandras12.unofficialhandbrake.data.ThemeMode
 import com.galandras12.unofficialhandbrake.ui.MainViewModel
 import com.galandras12.unofficialhandbrake.ui.SectionCard
@@ -44,6 +45,7 @@ import androidx.compose.foundation.clickable
 
 @Composable
 fun SettingsScreen(vm: MainViewModel, onAbout: () -> Unit) {
+    val context = androidx.compose.ui.platform.LocalContext.current
     val theme by vm.theme.collectAsStateWithLifecycle()
     val tree by vm.outputTree.collectAsStateWithLifecycle()
     val folderPicker = rememberLauncherForActivityResult(ActivityResultContracts.OpenDocumentTree()) { vm.setOutputTree(it) }
@@ -65,17 +67,18 @@ fun SettingsScreen(vm: MainViewModel, onAbout: () -> Unit) {
             DropdownField(
                 label = stringResource(R.string.language),
                 selected = tag,
-                options = listOf("") + Languages.all.map { it.first },
-                optionLabel = { t -> if (t.isEmpty()) stringResource(R.string.language_system) else Languages.all.first { it.first == t }.second },
+                options = listOf("") + Languages.all.map { it.first } + AutoTranslation.extraLanguages(),
+                optionLabel = { t -> if (t.isEmpty()) stringResource(R.string.language_system) else Languages.all.firstOrNull { it.first == t }?.second ?: AutoTranslation.displayName(t) },
                 onSelect = { t ->
                     tag = t
                     AppCompatDelegate.setApplicationLocales(
                         if (t.isEmpty()) LocaleListCompat.getEmptyLocaleList() else LocaleListCompat.forLanguageTags(t),
                     )
+                    AutoTranslation.prepare(context)
                 },
                 modifier = Modifier.fillMaxWidth(),
             )
-            Text(stringResource(R.string.language_hint), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(stringResource(R.string.language_hint) + " " + stringResource(R.string.language_auto_hint), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         SectionCard(title = stringResource(R.string.output_folder)) {
             Text(

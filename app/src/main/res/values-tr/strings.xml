@@ -161,6 +161,7 @@
     <string name="language_hint">HandDroid telefonunun dilini otomatik izler. Değiştirmek için buradan bir dil seç.</string>
     <string name="err_no_output">Kodlayıcı çıktı üretmedi</string>
     <string name="err_save_failed">Dönüştürülen dosya kaydedilemedi</string>
+    <string name="language_auto_hint">Listenin altındaki diller telefonunda Google ML Kit ile otomatik çevrilir (küçük bir dil paketi bir kez indirilir).</string>
     <string name="about_handdroid">HandDroid hakkında</string>
     <string name="about_summary">Sürüm, lisans ve katkıda bulunanlar</string>
     <string name="version_fmt">Sürüm %1$s</string>
