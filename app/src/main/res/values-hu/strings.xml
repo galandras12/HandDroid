@@ -156,6 +156,11 @@
     <string name="output_folder_hint">Az elkészült videók ide kerülnek.</string>
     <string name="choose_folder">Mappa választása</string>
     <string name="use_default">Alapértelmezett</string>
+    <string name="language">Nyelv</string>
+    <string name="language_system">Rendszer nyelve</string>
+    <string name="language_hint">A HandDroid automatikusan a telefon nyelvét követi. Itt felülbírálhatod.</string>
+    <string name="err_no_output">A kódoló nem hozott létre kimenetet</string>
+    <string name="err_save_failed">Az átalakított fájl mentése nem sikerült</string>
     <string name="about_handdroid">A HandDroid névjegye</string>
     <string name="about_summary">Verzió, licenc és köszönetnyilvánítás</string>
     <string name="version_fmt">%1$s verzió</string>

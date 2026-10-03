@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -23,6 +24,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
+import com.galandras12.handdroid.ui.DropdownField
+import com.galandras12.handdroid.ui.Languages
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -50,6 +58,24 @@ fun SettingsScreen(vm: MainViewModel, onAbout: () -> Unit) {
                 { stringResource(when (it) { ThemeMode.SYSTEM -> R.string.theme_system; ThemeMode.LIGHT -> R.string.theme_light; ThemeMode.DARK -> R.string.theme_dark }) },
                 vm::setTheme,
             )
+        }
+        SectionCard(title = stringResource(R.string.language)) {
+            // "" = follow the phone's language automatically; any other tag overrides it (per-app language)
+            var tag by remember { mutableStateOf(AppCompatDelegate.getApplicationLocales().get(0)?.language.orEmpty()) }
+            DropdownField(
+                label = stringResource(R.string.language),
+                selected = tag,
+                options = listOf("") + Languages.all.map { it.first },
+                optionLabel = { t -> if (t.isEmpty()) stringResource(R.string.language_system) else Languages.all.first { it.first == t }.second },
+                onSelect = { t ->
+                    tag = t
+                    AppCompatDelegate.setApplicationLocales(
+                        if (t.isEmpty()) LocaleListCompat.getEmptyLocaleList() else LocaleListCompat.forLanguageTags(t),
+                    )
+                },
+                modifier = Modifier.fillMaxWidth(),
+            )
+            Text(stringResource(R.string.language_hint), style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         SectionCard(title = stringResource(R.string.output_folder)) {
             Text(

@@ -156,6 +156,11 @@
     <string name="output_folder_hint">Converted videos are saved here.</string>
     <string name="choose_folder">Choose folder</string>
     <string name="use_default">Use default</string>
+    <string name="language">Language</string>
+    <string name="language_system">System default</string>
+    <string name="language_hint">HandDroid follows your phone\'s language automatically. Pick a language here to override it.</string>
+    <string name="err_no_output">The encoder produced no output</string>
+    <string name="err_save_failed">Could not save the converted file</string>
     <string name="about_handdroid">About HandDroid</string>
     <string name="about_summary">Version, license and credits</string>
     <string name="version_fmt">Version %1$s</string>

@@ -93,4 +93,13 @@ class UiSmokeTest {
         launch(ThemeMode.LIGHT, MainViewModel(app))
         shot("0_empty")
     }
+
+    @Test @Config(qualifiers = "de-w411dp-h891dp-xxhdpi")
+    fun germanLayout() {
+        val vm = vm()
+        launch(ThemeMode.LIGHT, vm)
+        shot("9_de_convert")
+        rule.onNodeWithText("Audio").performClick(); rule.waitForIdle(); shot("9_de_audio")
+        rule.onNodeWithText("Einstellungen").performClick(); rule.waitForIdle(); shot("9_de_settings")
+    }
 }

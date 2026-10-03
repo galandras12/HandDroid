@@ -264,7 +264,7 @@ private fun SummaryTab(s: EncodeSettings, sources: List<SourceInfo>, outputName:
 @Composable
 private fun summaryText(s: EncodeSettings): String {
     val v = s.videoEncoder
-    val q = if (s.qualityMode == QualityMode.CONSTANT_QUALITY && v.maxRf > 0) "RF ${"%.1f".format(s.quality)}" else "${s.bitrateKbps} kbps" + if (s.twoPass) " (2-pass)" else ""
+    val q = if (s.qualityMode == QualityMode.CONSTANT_QUALITY && v.maxRf > 0) "RF ${"%.1f".format(s.quality)}" else "${s.bitrateKbps} kbps" + if (s.twoPass) " · " + stringResource(R.string.two_pass) else ""
     val res = if (s.maxWidth > 0 || s.maxHeight > 0) "≤ ${s.maxWidth.takeIf { it > 0 } ?: "∞"}×${s.maxHeight.takeIf { it > 0 } ?: "∞"}" else stringResource(R.string.res_original)
     val a = if (s.audioTracks == TrackMode.NONE) stringResource(R.string.track_none) else "${s.audioEncoder.label}" +
         (if (s.audioEncoder != AudioEncoder.COPY && !s.audioEncoder.lossless) " ${s.audioBitrate} kbps" else "") + " · ${s.audioTracks.label()}"

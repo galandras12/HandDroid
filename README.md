@@ -26,7 +26,7 @@ settings – and brings it to Android in a modern Material 3 Expressive interfac
   * Chapter markers, Web optimized (fast-start) MP4
 * **Queue** with progress, FPS, speed and ETA; runs as a foreground service so encodes continue with the screen off; activity log per job.
 * Batch conversion (pick several videos), *Share → HandDroid* from other apps, saves to `Movies/HandDroid` or a folder you choose.
-* English and Hungarian UI, light / dark / system theme.
+* **12 languages**, chosen automatically from the phone's language (English, Magyar, Deutsch, Français, Español, Italiano, Português, Polski, Русский, Türkçe, 日本語, 中文) with an in-app override (also listed in Android 13+ per-app language settings); light / dark / system theme.
 
 ## How it works – and how it differs from HandBrake
 
@@ -58,7 +58,7 @@ Release signing is read from the environment: `HANDDROID_KEYSTORE`, `HANDDROID_K
 | Script | Purpose |
 |---|---|
 | `tools/convert_presets.py` | Converts HandBrake's `preset/preset_builtin.json` to `app/src/main/assets/presets.json` |
-| `tools/gen_strings.py` | Generates the English and Hungarian `strings.xml` from one table |
+| `tools/gen_strings.py` | Generates every language's `strings.xml`, `locales_config.xml` and `Languages.kt` from `tools/i18n/*.txt` (checks for missing keys and placeholder mismatches) |
 | `tools/gen_logo.py` | Draws the logo and writes the vector drawables / `docs/logo.svg` |
 | `tools/validate_commands.py` | Runs every generated command line against a desktop `ffmpeg` as a sanity check |
 
@@ -67,3 +67,11 @@ Release signing is read from the environment: `HANDDROID_KEYSTORE`, `HANDDROID_K
 HandBrake © HandBrake Team · FFmpeg · FFmpegKit · x264 · x265 · libvpx · libaom · Opus · LAME · Vorbis ·
 Jetpack Compose / Material 3. The Android robot head in the logo is a simplified redrawing in the spirit of the
 Android logo (CC BY 3.0, Google).
+
+## Adding a language
+
+1. Copy `tools/i18n/de.txt` to `tools/i18n/<tag>.txt` and translate the text after each ` = `.
+2. Add the language to `LANGS` in `tools/gen_strings.py` and to `localeFilters` in `app/build.gradle.kts`.
+3. Run `python3 tools/gen_strings.py app/src/main/res app/src/main/java/com/galandras12/handdroid/ui`.
+
+HandBrake preset names and descriptions are kept in English, as in HandBrake itself.

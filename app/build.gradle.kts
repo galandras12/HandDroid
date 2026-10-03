@@ -53,12 +53,13 @@ android {
         jniLibs { useLegacyPackaging = true }
         resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
     }
-    androidResources { localeFilters += listOf("en", "hu") }
+    androidResources { localeFilters += listOf("en", "hu", "de", "fr", "es", "it", "pt", "pl", "ru", "tr", "ja", "zh") }
     testOptions { unitTests { isIncludeAndroidResources = true } }
 }
 
 dependencies {
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.appcompat)
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.viewmodel.compose)

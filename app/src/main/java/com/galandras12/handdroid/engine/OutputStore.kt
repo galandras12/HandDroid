@@ -8,6 +8,7 @@ import android.os.Environment
 import android.provider.DocumentsContract
 import android.provider.MediaStore
 import androidx.core.content.FileProvider
+import com.galandras12.handdroid.R
 import com.galandras12.handdroid.data.Container
 import java.io.File
 
@@ -29,7 +30,7 @@ object OutputStore {
             val tree = Uri.parse(treeUri)
             val parent = DocumentsContract.buildDocumentUriUsingTree(tree, DocumentsContract.getTreeDocumentId(tree))
             val doc = DocumentsContract.createDocument(resolver, parent, container.mime, fileName)
-                ?: error("Could not create a file in the selected output folder")
+                ?: error(context.getString(R.string.err_save_failed))
             resolver.openOutputStream(doc, "w")!!.use { out -> temp.inputStream().use { it.copyTo(out) } }
             return Saved(doc.toString(), size)
         }
@@ -42,7 +43,7 @@ object OutputStore {
                 put(MediaStore.Video.Media.IS_PENDING, 1)
             }
             val collection = MediaStore.Video.Media.getContentUri(MediaStore.VOLUME_EXTERNAL_PRIMARY)
-            val item = resolver.insert(collection, values) ?: error("Could not create a file in Movies/$FOLDER")
+            val item = resolver.insert(collection, values) ?: error(context.getString(R.string.err_save_failed))
             try {
                 resolver.openOutputStream(item, "w")!!.use { out -> temp.inputStream().use { it.copyTo(out) } }
                 resolver.update(item, ContentValues().apply { put(MediaStore.Video.Media.IS_PENDING, 0) }, null, null)

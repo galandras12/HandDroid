@@ -186,7 +186,7 @@ class EncodeEngine(private val context: Context, private val settingsStore: Sett
             }
             done += weight
         }
-        return if (temp.exists() && temp.length() > 0) Outcome.Success else Outcome.Failed("The encoder produced no output")
+        return if (temp.exists() && temp.length() > 0) Outcome.Success else Outcome.Failed(context.getString(com.galandras12.handdroid.R.string.err_no_output))
     }
 
     // FFmpeg can log many lines per second; batch them so the UI isn't recomposed for each one.
@@ -212,7 +212,7 @@ class EncodeEngine(private val context: Context, private val settingsStore: Sett
 
     private fun lastLogLinesOf(id: Long): String =
         _jobs.value.firstOrNull { it.id == id }?.log?.trim()?.lines()?.filter { it.isNotBlank() }?.takeLast(3)?.joinToString("\n")
-            ?: "Encoding failed"
+            ?: context.getString(com.galandras12.handdroid.R.string.status_failed)
 
     private companion object {
         const val MAX_LOG = 60_000
